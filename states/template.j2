@@ -1,0 +1,11 @@
+
+{%- for i in ['meo', 'bo', 'ga'] %}
+  - {{ i }}
+{%- endfor %}
+
+myuser: user
+mypassword: passwd
+
+os: {{ grains['osfinger'] }}
+ips: {{ grains['ipv4'] }}
+

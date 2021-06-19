@@ -1,0 +1,16 @@
+# /lib/systemd/system/uds.service
+[Unit]
+Description=UDS telegram bot
+
+[Service]
+User={{ username }}
+Environment=BOT_TOKEN={{ pillar['telegram_token'] }}
+Environment=WEATHER_TOKEN={{ pillar['weather_token'] }}
+ExecStart=/home/{{ username }}/env/bin/python /home/{{ username }}/udsbot/bot.py
+IgnoreSIGPIPE=false
+KillMode=process
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
