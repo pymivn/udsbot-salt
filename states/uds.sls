@@ -1,10 +1,13 @@
-{% set username = 'uds90' %}
+{% set username = 'uds99' %}
 
 uds_user:
   user.present:
     - name: {{ username }}
-  git.cloned:
+
+uds_code:
+  git.latest:
     - name: https://github.com/pymivn/udsbot
+    - branch: main
     - target: /home/{{ username }}/udsbot
   virtualenv.managed:
     - name: /home/{{ username }}/env
@@ -26,6 +29,7 @@ uds_systemd:
     - name: uds
     - watch:
       - file: uds_systemd
+      - git: uds_code
 
   cmd.run:
     - name: pgrep -af '.*udsbot.*'
