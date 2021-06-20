@@ -1,5 +1,4 @@
 base:
   '*':
     - common
-  'trau':
     - uds
