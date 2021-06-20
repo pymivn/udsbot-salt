@@ -12,8 +12,8 @@ uds_code:
     - name: https://github.com/pymivn/udsbot
     - branch: main
     - target: /home/{{ username }}/udsbot
-  cmd.run:
-    - name: python3 -m venv /home/{{ username }}/env && /home/{{ username }}/env/bin/pip install -r /home/{{ username }}/udsbot/requirements.txt
+  cmd.wait:
+    - name: python3 -m venv /home/{{ username }}/env && /home/{{ username }}/env/bin/pip install -r /home/{{ username }}/udsbot/requirements.txt > /dev/null
     - watch:
       - git: uds_code
 
