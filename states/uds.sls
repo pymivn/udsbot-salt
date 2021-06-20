@@ -1,4 +1,7 @@
 {% set username = 'uds99' %}
+virtualenv_pkg:
+  pkg.installed:
+    - name: python3-venv
 
 uds_user:
   user.present:
@@ -9,10 +12,10 @@ uds_code:
     - name: https://github.com/pymivn/udsbot
     - branch: main
     - target: /home/{{ username }}/udsbot
-  virtualenv.managed:
-    - name: /home/{{ username }}/env
-    - python: /usr/bin/python3
-    - requirements: /home/{{ username }}/udsbot/requirements.txt
+  cmd.run:
+    - name: python3 -m venv /home/{{ username }}/env && /home/{{ username }}/env/bin/pip install -r /home/{{ username }}/udsbot/requirements.txt
+    - watch:
+      - git: uds_code
 
 uds_systemd:
   file.managed:
