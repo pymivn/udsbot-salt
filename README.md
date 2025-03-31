@@ -1,3 +1,6 @@
+# Salt itself is a moving target, as of 2025 it's under VMWare and no longer support install via pip
+# switched to other less-moving solution.
+
 # udsbot Salt formula
 
 Salt formula for installing [Telegram bot udsbot](https://github.com/pymivn/udsbot)
